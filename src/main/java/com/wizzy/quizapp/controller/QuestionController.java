@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,8 +46,15 @@ public class QuestionController {
 		return questionService.getQuestionById(id);
 	}
 
+	// Update Question By Id
 	@PutMapping("/{id}")
 	public ResponseEntity<Question> updateQuestion(@PathVariable int id, @RequestBody Question updtaedQuestion) {
 		return questionService.updateQuestion(id, updtaedQuestion);
+	}
+
+	// Delete Question By Id
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteQuestion(@PathVariable int id) {
+		return questionService.deleteQuestion(id);
 	}
 }

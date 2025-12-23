@@ -51,4 +51,13 @@ public class QuestionService {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+	public ResponseEntity<String> deleteQuestion(int id) {
+		if (questionRepository.existsById(id)) {
+			questionRepository.deleteById(id);
+			return ResponseEntity.ok("Record Deleted Successfully");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }
