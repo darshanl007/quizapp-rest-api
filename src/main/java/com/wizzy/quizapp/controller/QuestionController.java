@@ -44,4 +44,9 @@ public class QuestionController {
 	public ResponseEntity<Question> getQuestionById(@PathVariable int id) {
 		return questionService.getQuestionById(id);
 	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<Question> updateQuestion(@PathVariable int id, @RequestBody Question updtaedQuestion) {
+		return questionService.updateQuestion(id, updtaedQuestion);
+	}
 }

@@ -33,4 +33,22 @@ public class QuestionService {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+	public ResponseEntity<Question> updateQuestion(int id, Question updatedQuestion) {
+		Optional<Question> existing = questionRepository.findById(id);
+		if (existing.isPresent()) {
+			Question q = existing.get();
+			q.setQuestion(updatedQuestion.getQuestion());
+			q.setOption1(updatedQuestion.getOption1());
+			q.setOption2(updatedQuestion.getOption2());
+			q.setOption3(updatedQuestion.getOption3());
+			q.setOption4(updatedQuestion.getOption4());
+			q.setCorrectAnswer(updatedQuestion.getCorrectAnswer());
+
+			Question updated = questionRepository.save(q);
+			return ResponseEntity.ok(updated);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }
