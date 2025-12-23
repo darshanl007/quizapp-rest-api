@@ -25,4 +25,5 @@ public class Question {
 	
 	@Column(name = "correct_answer")
 	private String correctAnswer;
+
 }
